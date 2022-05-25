@@ -1,0 +1,22 @@
+{
+  "name": "ohmyfood",
+  "version": "1.0.0",
+  "description": "Mon projet Openclassrooms #3 - OhMyFood",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xczema/Projet3_OhMyFood_TANG_Vincent.git"
+  },
+  "author": "Vincent TANG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xczema/Projet3_OhMyFood_TANG_Vincent/issues"
+  },
+  "homepage": "https://github.com/Xczema/Projet3_OhMyFood_TANG_Vincent#readme",
+  "devDependencies": {
+    "sass": "^1.52.1"
+  }
+}

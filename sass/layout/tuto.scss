@@ -5,11 +5,12 @@
 
 .tuto {
   counter-reset: steps;
-  padding: 0 1rem;
+  margin-bottom: 2rem;
   & ol {
     list-style-type: none;
     display: flex;
     gap: 2rem;
+    padding-inline-start: 0;
     @media (max-width: 1000px) {
       flex-direction: column;
     }
@@ -19,7 +20,7 @@
     &::before {
       content: counter(steps);
       counter-increment: steps;
-      background-color: colors.$purple;
+      background-color: colors.$color-primary;
       color: white;
       width: 2 * variables.$tuto-bullet-height;
       height: 2 * variables.$tuto-bullet-height;
@@ -27,7 +28,8 @@
       display: grid;
       place-items: center;
       position: absolute;
-      bottom: variables.$tuto-bullet-height;
+      bottom: 50%;
+      transform: translateY(+50%);
       left: -1 * variables.$tuto-bullet-height + 0.25rem;
     }
     background-color: #f6f6f6;

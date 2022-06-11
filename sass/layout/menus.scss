@@ -1,6 +1,6 @@
 @use "../utils/variables";
 @use "../utils/colors";
-@use "../utils/linear-gradient";
+@use "../utils/mixins";
 
 .menus {
   background-color: #f6f6f6;
@@ -51,22 +51,20 @@
       p {
         padding: 0.3rem;
       }
-      i {
-        font-size: 2rem;
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
+      // Icône favoris (Coeur VIDE) sur card_description
+      &::before {
+        @include mixins.heart;
       }
-      .fas {
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        opacity: 0;
-        transition: all 200ms ease-in-out;
-        @include linear-gradient.gradient(1);
+      // Icône favoris (Coeur PLEIN) sur card_description
+      &::after {
+        @include mixins.heart(
+          $opacity: 0,
+          $font-weight: 900,
+          $color: transparent
+        );
+        @include mixins.gradient(1);
       }
-      &:hover .fas {
+      &:hover::after {
         opacity: 1;
         transform: translateY(-50%) scale(1.2);
       }

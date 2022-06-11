@@ -1,5 +1,4 @@
-@use "../utils/box-shadow";
-@use "../utils/linear-gradient";
+@use "../utils/mixins";
 
 .explorer {
   text-align: center;
@@ -18,8 +17,8 @@
     border-radius: 2rem;
     transition: transform 200ms;
     margin-top: 0.5rem;
-    @include box-shadow.base-shadow;
-    @include linear-gradient.gradient;
+    @include mixins.base-shadow;
+    @include mixins.gradient;
   }
   & button:hover {
     transform: scale(1.02);

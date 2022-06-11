@@ -1,5 +1,4 @@
-@use "../utils/box-shadow";
-@use "../utils/zoom";
+@use "../utils/mixins";
 @use "../utils/variables";
 @use "../utils/colors";
 
@@ -36,9 +35,9 @@
     padding: 1.5rem 2rem;
     flex-grow: 1;
     border-radius: 1rem;
-    @include box-shadow.base-shadow;
+    @include mixins.base-shadow;
     &:hover {
-      @include zoom.zoom;
+      @include mixins.zoom;
     }
     & i.fas {
       margin-right: 1rem;

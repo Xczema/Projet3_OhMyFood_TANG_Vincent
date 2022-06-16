@@ -6,8 +6,8 @@
   );
 }
 
-@mixin base-shadow {
-  box-shadow: 2px 5px 8px -4px black;
+@mixin box-shadow {
+  box-shadow: 2px 3px 12px -10px black;
 }
 
 @mixin zoom {
@@ -29,6 +29,7 @@
   font-size: 2rem;
   position: absolute;
   right: 1rem;
+  // Placement du coeur
   top: 50%;
   transform: translateY(-50%);
 

@@ -17,7 +17,7 @@
     border-radius: 2rem;
     transition: transform 200ms;
     margin-top: 0.5rem;
-    @include mixins.base-shadow;
+    @include mixins.box-shadow;
     @include mixins.gradient;
   }
   & button:hover {

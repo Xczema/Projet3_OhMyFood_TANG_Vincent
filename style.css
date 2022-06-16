@@ -74,7 +74,7 @@ header {
   border-radius: 2rem;
   transition: transform 200ms;
   margin-top: 0.5rem;
-  box-shadow: 2px 5px 8px -4px black;
+  box-shadow: 2px 3px 12px -10px black;
   background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
 }
 .explorer button:hover {
@@ -103,7 +103,7 @@ header {
   padding: 1.5rem 2rem;
   flex-grow: 1;
   border-radius: 1rem;
-  box-shadow: 2px 5px 8px -4px black;
+  box-shadow: 2px 3px 12px -10px black;
 }
 .tuto li::before {
   content: counter(steps);
@@ -326,12 +326,19 @@ body {
   }
 }
 #page-restau .menus .menus__category {
-  border: 1px solid red;
-  background-color: white;
-  border-radius: 1rem;
+  overflow: hidden;
+}
+#page-restau .menus .menus__category .menu__title {
+  text-decoration: underline;
 }
 #page-restau .menus .menus__category .menu-item {
   display: flex;
+  background-color: white;
+  overflow: hidden;
+  margin: 0.3rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 2px 3px 12px -10px black;
 }
 #page-restau .menus .menus__category .menu-item .menu-item__price {
   margin-left: auto;
@@ -342,12 +349,47 @@ body {
 }
 #page-restau .menus .menus__category .menu-item .menu-item__description {
   padding: 1rem;
+  overflow: hidden;
+}
+#page-restau .menus .menus__category .menu-item .menu-item__description h4,
+#page-restau .menus .menus__category .menu-item .menu-item__description p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #page-restau .menus .menus__category .menu-item .menu-item__check {
+  border-radius: 0 1rem 1rem 0;
   background-color: #99e2d0;
+  margin-right: -4rem;
+  width: 4rem;
+  transition: margin-right 0.5s;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
 }
-#page-restau .menus .menus__category .menu-item > * {
-  border: 1px solid;
+#page-restau .menus .menus__category .menu-item .menu-item__check i {
+  display: grid;
+  place-items: center;
+  color: #99e2d0;
+  -webkit-text-stroke: 3px #99e2d0;
+  background: white;
+  aspect-ratio: 1;
+  width: 2rem;
+  border-radius: 50%;
+}
+#page-restau .menus .menus__category .menu-item:hover .menu-item__check {
+  margin-right: 0;
+}
+#page-restau .menus .menus__category .menu-item:hover i {
+  animation: quarter-spin 0.4s ease-in-out;
+}
+@keyframes quarter-spin {
+  0% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

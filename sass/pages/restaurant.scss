@@ -1,6 +1,7 @@
 @use "../utils/mixins";
 @use "../utils/variables";
 @use "../utils/colors";
+@use "../utils/animations";
 
 body {
   background-color: colors.$lightergrey;
@@ -37,11 +38,18 @@ body {
       grid-template-columns: 1fr;
     }
     .menus__category {
-      border: 1px solid red;
-      background-color: white;
-      border-radius: 1rem;
+      overflow: hidden; // <h4> et <p> de menu-item__description affiche [...] lorsque la largeur de l'ecran est trop petite
+      .menu__title {
+        text-decoration: underline;
+      }
       .menu-item {
         display: flex;
+        background-color: white;
+        overflow: hidden;
+        margin: 0.3rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        @include mixins.box-shadow;
         .menu-item__price {
           margin-left: auto;
           font-weight: 900;
@@ -51,12 +59,48 @@ body {
         }
         .menu-item__description {
           padding: 1rem;
+          overflow: hidden; // <h4> et <p> de menu-item__description affiche [...] lorsque la largeur de l'ecran est trop petite
+          h4,
+          p {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
         .menu-item__check {
+          // Forme & Couleur du button-check
+          $button-width: 4rem;
+          border-radius: 0 1rem 1rem 0;
           background-color: colors.$color-tertiary;
+          margin-right: -1 * $button-width;
+          width: $button-width;
+          // Animation du button-check
+          transition: margin-right 0.5s;
+          // Checkmark
+          display: grid;
+          place-items: center;
+          & i {
+            display: grid;
+            place-items: center;
+            color: colors.$color-tertiary;
+            -webkit-text-stroke: 3px colors.$color-tertiary; // Weight de Checkmark
+            background: white;
+            // Proportion et forme du Checkmark
+            aspect-ratio: 1; // Width toujours égale au Height
+            width: 2rem;
+            border-radius: 50%;
+          }
+          flex-shrink: 0; // Pour empêcher le button-check de retrécir lorsqu'il s'affiche sur un petit ecran
         }
-        & > * {
-          border: 1px solid;
+        &:hover {
+          .menu-item__check {
+            margin-right: 0;
+          }
+          // Animation du spin de la Checkmark
+          i {
+            @include animations.quarter-spin;
+            animation: quarter-spin 0.4s ease-in-out;
+          }
         }
       }
     }

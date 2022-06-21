@@ -8,6 +8,16 @@ body {
 }
 
 #page-restau {
+  // Flèche vers la gauche sur le Header
+  header::before {
+    @include mixins.font-awesome($font-weight: 900);
+    content: "\f060";
+    left: 1rem;
+    font-size: 20px;
+    // Pour placer l'élément au milieu verticalement comme dans tuto.scss
+    bottom: 50%;
+    transform: translateY(+50%);
+  }
   .banner img {
     display: block;
     width: 100%;
@@ -37,12 +47,39 @@ body {
     @media (max-width: variables.$breakpoint) {
       grid-template-columns: 1fr;
     }
+    h3 {
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      //Barre couleur tertiaire qui souligne le titre "Entrées / Plats / Desserts"
+      &::after {
+        content: "";
+        position: absolute;
+        height: 0.25rem;
+        width: 3rem;
+        top: 1.5rem;
+        left: 0;
+        background-color: colors.$color-tertiary;
+      }
+    }
     .menus__category {
       overflow: hidden; // <h4> et <p> de menu-item__description affiche [...] lorsque la largeur de l'ecran est trop petite
+
       .menu__title {
-        text-decoration: underline;
+        padding-bottom: 1rem;
       }
       .menu-item {
+        // Animation : apparition des cartes
+        // Et non "from 1 through 3" pcq le menu__title compte parmi les "$i"
+        @for $i from 2 through 4 {
+          //nth-child > sélectionner un ou plusieurs éléms en fonction de leur ordre dans la source et selon les critères déterminées
+          &:nth-child(#{$i}) {
+            animation-delay: 100ms * $i;
+          }
+        }
+        animation: appear 1s;
+        animation-fill-mode: both;
+
         display: flex;
         background-color: white;
         overflow: hidden;
@@ -50,6 +87,7 @@ body {
         border-radius: 1rem;
         margin-bottom: 1rem;
         @include mixins.box-shadow;
+
         .menu-item__price {
           margin-left: auto;
           font-weight: 900;
@@ -80,19 +118,21 @@ body {
           display: grid;
           place-items: center;
           & i {
+            $size: 1rem;
             display: grid;
             place-items: center;
             color: colors.$color-tertiary;
             -webkit-text-stroke: 3px colors.$color-tertiary; // Weight de Checkmark
             background: white;
             // Proportion et forme du Checkmark
-            aspect-ratio: 1; // Width toujours égale au Height
-            width: 2rem;
+            height: $size;
+            width: $size;
             border-radius: 50%;
           }
           flex-shrink: 0; // Pour empêcher le button-check de retrécir lorsqu'il s'affiche sur un petit ecran
         }
         &:hover {
+          cursor: pointer;
           .menu-item__check {
             margin-right: 0;
           }
@@ -103,6 +143,15 @@ body {
           }
         }
       }
+    }
+  }
+
+  section.order {
+    height: 20vh;
+    display: grid;
+    place-items: center;
+    button {
+      @include mixins.base-button;
     }
   }
 }

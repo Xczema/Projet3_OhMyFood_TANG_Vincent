@@ -42,6 +42,7 @@ header {
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
   padding: 0.3rem;
   position: relative;
+  background-color: white;
 }
 
 .city {
@@ -55,12 +56,18 @@ header {
 .city i {
   font-size: 1.5rem;
 }
+.city h2 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
 
 .explorer {
   text-align: center;
+  margin: 2rem;
 }
 .explorer h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin: 1rem;
 }
 .explorer p {
   font-size: 1rem;
@@ -74,17 +81,43 @@ header {
   border-radius: 2rem;
   transition: transform 200ms;
   margin-top: 0.5rem;
+  cursor: pointer;
   box-shadow: 2px 3px 12px -10px black;
   background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
+  font-size: 1rem;
 }
 .explorer button:hover {
   transform: scale(1.02);
   opacity: 0.9;
 }
 
+@keyframes disappear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.loader {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  height: 100vh;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  animation: disappear 0.2s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+}
+
 .tuto {
   counter-reset: steps;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .tuto ol {
   list-style-type: none;
@@ -132,6 +165,9 @@ header {
 #homepage .menus {
   background-color: #f6f6f6;
   margin-bottom: 2rem;
+}
+#homepage .menus h2 {
+  margin-bottom: 1rem;
 }
 #homepage .menus .menus__cards {
   display: grid;
@@ -182,6 +218,7 @@ header {
 }
 #homepage .menus .card__description::before {
   display: inline-block;
+  position: absolute;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
@@ -190,7 +227,6 @@ header {
   font-weight: 400;
   content: "\f004";
   font-size: 2rem;
-  position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
@@ -202,6 +238,7 @@ header {
 }
 #homepage .menus .card__description::after {
   display: inline-block;
+  position: absolute;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
@@ -210,7 +247,6 @@ header {
   font-weight: 900;
   content: "\f004";
   font-size: 2rem;
-  position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
@@ -244,10 +280,35 @@ footer p {
   padding: 0.3rem;
 }
 
+@keyframes appear {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 body {
   background-color: #f6f6f6;
 }
 
+#page-restau header::before {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f060";
+  left: 1rem;
+  font-size: 20px;
+  bottom: 50%;
+  transform: translateY(50%);
+}
 #page-restau .banner img {
   display: block;
   width: 100%;
@@ -269,6 +330,7 @@ body {
 }
 #page-restau .restau__title h2::before {
   display: inline-block;
+  position: absolute;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
@@ -277,7 +339,6 @@ body {
   font-weight: 400;
   content: "\f004";
   font-size: 2rem;
-  position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
@@ -289,6 +350,7 @@ body {
 }
 #page-restau .restau__title h2::after {
   display: inline-block;
+  position: absolute;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
@@ -297,7 +359,6 @@ body {
   font-weight: 900;
   content: "\f004";
   font-size: 2rem;
-  position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
@@ -325,13 +386,29 @@ body {
     grid-template-columns: 1fr;
   }
 }
+#page-restau .menus h3 {
+  text-transform: uppercase;
+  font-weight: 400;
+  position: relative;
+}
+#page-restau .menus h3::after {
+  content: "";
+  position: absolute;
+  height: 0.25rem;
+  width: 3rem;
+  top: 1.5rem;
+  left: 0;
+  background-color: #99e2d0;
+}
 #page-restau .menus .menus__category {
   overflow: hidden;
 }
 #page-restau .menus .menus__category .menu__title {
-  text-decoration: underline;
+  padding-bottom: 1rem;
 }
 #page-restau .menus .menus__category .menu-item {
+  animation: appear 1s;
+  animation-fill-mode: both;
   display: flex;
   background-color: white;
   overflow: hidden;
@@ -339,6 +416,15 @@ body {
   border-radius: 1rem;
   margin-bottom: 1rem;
   box-shadow: 2px 3px 12px -10px black;
+}
+#page-restau .menus .menus__category .menu-item:nth-child(2) {
+  animation-delay: 200ms;
+}
+#page-restau .menus .menus__category .menu-item:nth-child(3) {
+  animation-delay: 300ms;
+}
+#page-restau .menus .menus__category .menu-item:nth-child(4) {
+  animation-delay: 400ms;
 }
 #page-restau .menus .menus__category .menu-item .menu-item__price {
   margin-left: auto;
@@ -373,9 +459,12 @@ body {
   color: #99e2d0;
   -webkit-text-stroke: 3px #99e2d0;
   background: white;
-  aspect-ratio: 1;
-  width: 2rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
+}
+#page-restau .menus .menus__category .menu-item:hover {
+  cursor: pointer;
 }
 #page-restau .menus .menus__category .menu-item:hover .menu-item__check {
   margin-right: 0;
@@ -390,6 +479,28 @@ body {
   100% {
     transform: rotate(0);
   }
+}
+#page-restau section.order {
+  height: 20vh;
+  display: grid;
+  place-items: center;
+}
+#page-restau section.order button {
+  color: white;
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  transition: transform 200ms;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  box-shadow: 2px 3px 12px -10px black;
+  background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
+}
+#page-restau section.order button:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 /*# sourceMappingURL=style.css.map */

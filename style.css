@@ -12,7 +12,9 @@ body {
 }
 
 main {
+  background-color: white;
   padding: 0 7rem;
+  margin-bottom: 2rem;
 }
 @media (max-width: 1000px) {
   main {
@@ -47,23 +49,24 @@ header {
 
 .city {
   display: flex;
+  background-color: #e9e9e9;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 .city i {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .city h2 {
-  font-size: 1.2rem;
-  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 .explorer {
+  background-color: #f6f6f6;
   text-align: center;
-  margin: 2rem;
+  padding: 2rem;
 }
 .explorer h2 {
   font-size: 1.5rem;
@@ -116,8 +119,7 @@ header {
 
 .tuto {
   counter-reset: steps;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  padding: 2rem 1rem;
 }
 .tuto ol {
   list-style-type: none;
@@ -155,6 +157,11 @@ header {
 }
 .tuto li:hover {
   transform: scale(1.02);
+  background-color: #f2eafb;
+  font-weight: 500;
+}
+.tuto li:hover i::before {
+  color: #9356dc;
 }
 .tuto li i.fas {
   margin-right: 1rem;
@@ -164,7 +171,8 @@ header {
 
 #homepage .menus {
   background-color: #f6f6f6;
-  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
 }
 #homepage .menus h2 {
   margin-bottom: 1rem;
@@ -198,6 +206,7 @@ header {
   border-radius: 1rem 1rem 0 0;
   height: 15rem;
   background-size: cover;
+  background-position: center;
 }
 #homepage .menus .card__image-1 {
   background-image: url("../../assets/menu-1.jpg");
@@ -290,10 +299,9 @@ footer p {
     opacity: 1;
   }
 }
-body {
+#page-restau body {
   background-color: #f6f6f6;
 }
-
 #page-restau header::before {
   display: inline-block;
   position: absolute;
@@ -375,8 +383,10 @@ body {
 }
 #page-restau .restau__main {
   padding: 0 1rem;
+  background-color: #f6f6f6;
 }
 #page-restau .menus {
+  background-color: #f6f6f6;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -396,7 +406,7 @@ body {
   position: absolute;
   height: 0.25rem;
   width: 3rem;
-  top: 1.5rem;
+  top: 3rem;
   left: 0;
   background-color: #99e2d0;
 }
@@ -404,6 +414,7 @@ body {
   overflow: hidden;
 }
 #page-restau .menus .menus__category .menu__title {
+  padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
 #page-restau .menus .menus__category .menu-item {
@@ -457,10 +468,10 @@ body {
   display: grid;
   place-items: center;
   color: #99e2d0;
-  -webkit-text-stroke: 3px #99e2d0;
+  -webkit-text-stroke: 1px #99e2d0;
   background: white;
-  height: 1rem;
-  width: 1rem;
+  height: 1.3rem;
+  width: 1.3rem;
   border-radius: 50%;
 }
 #page-restau .menus .menus__category .menu-item:hover {

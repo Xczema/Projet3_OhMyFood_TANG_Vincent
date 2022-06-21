@@ -3,11 +3,10 @@
 @use "../utils/colors";
 @use "../utils/animations";
 
-body {
-  background-color: colors.$lightergrey;
-}
-
 #page-restau {
+  body {
+    background-color: colors.$lightergrey;
+  }
   // Flèche vers la gauche sur le Header
   header::before {
     @include mixins.font-awesome($font-weight: 900);
@@ -38,9 +37,11 @@ body {
   }
   .restau__main {
     padding: 0 1rem;
+    background-color: colors.$lightergrey;
   }
 
   .menus {
+    background-color: colors.$lightergrey;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -57,7 +58,7 @@ body {
         position: absolute;
         height: 0.25rem;
         width: 3rem;
-        top: 1.5rem;
+        top: 3rem;
         left: 0;
         background-color: colors.$color-tertiary;
       }
@@ -66,6 +67,7 @@ body {
       overflow: hidden; // <h4> et <p> de menu-item__description affiche [...] lorsque la largeur de l'ecran est trop petite
 
       .menu__title {
+        padding-top: 1.5rem;
         padding-bottom: 1rem;
       }
       .menu-item {
@@ -118,11 +120,11 @@ body {
           display: grid;
           place-items: center;
           & i {
-            $size: 1rem;
+            $size: 1.3rem;
             display: grid;
             place-items: center;
             color: colors.$color-tertiary;
-            -webkit-text-stroke: 3px colors.$color-tertiary; // Weight de Checkmark
+            -webkit-text-stroke: 1px colors.$color-tertiary; // Weight de Checkmark
             background: white;
             // Proportion et forme du Checkmark
             height: $size;

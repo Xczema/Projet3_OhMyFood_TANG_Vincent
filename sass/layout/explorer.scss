@@ -1,8 +1,10 @@
 @use "../utils/mixins";
+@use "../utils/colors";
 
 .explorer {
+  background-color: colors.$lightergrey;
   text-align: center;
-  margin: 2rem;
+  padding: 2rem;
   & h2 {
     font-size: 1.5rem;
     margin: 1rem;

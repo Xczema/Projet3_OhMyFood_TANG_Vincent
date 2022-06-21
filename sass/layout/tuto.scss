@@ -4,8 +4,7 @@
 
 .tuto {
   counter-reset: steps;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  padding: 2rem 1rem;
   & ol {
     list-style-type: none;
     display: flex;
@@ -39,6 +38,11 @@
     @include mixins.box-shadow;
     &:hover {
       @include mixins.zoom;
+      background-color: lighten(colors.$color-primary, 35%);
+      font-weight: 500;
+      i::before {
+        color: colors.$color-primary;
+      }
     }
     & i.fas {
       margin-right: 1rem;

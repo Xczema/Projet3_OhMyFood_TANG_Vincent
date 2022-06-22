@@ -43,7 +43,7 @@
         background-size: cover;
         background-position: center;
       }
-      // Boucle Card__image
+      // Boucle Card__image x tentative de rebuild style.min.css
       @for $i from 1 through 4 {
         &__image-#{$i} {
           background-image: url("../assets/menu-#{$i}.jpg");
